@@ -1,30 +1,18 @@
 package com.example.demo;
 
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
+import java.util.Base64;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import static io.restassured.RestAssured.*;
-import io.restassured.RestAssured.*;
-import io.restassured.matcher.RestAssuredMatchers.*;
-import org.hamcrest.Matchers.*;
-import io.restassured.module.jsv.JsonSchemaValidator.*;
-
-import io.restassured.matcher.RestAssuredMatchers.*;
+import  io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 
 
-
-import java.util.Base64;
-
-
-//@SpringBootTest(classes=OAuth2Application.class)
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @WebAppConfiguration
 public class RestAssuredOAuth2 {
 
@@ -33,6 +21,8 @@ public class RestAssuredOAuth2 {
     public static String scope = "read";
     public static String username = "user1";
     public static String password = "pass1";
+    
+   
 
     public static String encode(String str1, String str2) {
         return new String(Base64.getEncoder().encode((str1 + ":" + str2).getBytes()));
@@ -40,12 +30,12 @@ public class RestAssuredOAuth2 {
        
     }
     
-    @Test
+    //@Test
     public void myTest() {
     	
     	try {
     		
-    		 given().when().get("https://reqres.in/api/users?page=2").then().statusCode(200);
+    		RestAssured.given().when().get("https://reqres.in/api/users?page=2").then().statusCode(200);
     		
     	}
     	catch (Exception e) {
@@ -59,7 +49,31 @@ public class RestAssuredOAuth2 {
     	
         String authorization = encode(username, password);
         
+        
+        
+        
         try {
+        	
+
+
+        	RestAssured.baseURI = "http://localhost:8080";
+        	      
+        	
+        	return
+        			RestAssured.given()
+                            .header("authorization", "Basic " + authorization)
+                            .contentType(ContentType.URLENC)
+                            .formParam("response_type", "code")
+                            .queryParam("client_id", clientId)
+                            .queryParam("redirect_uri", redirectUri)
+                            .queryParam("scope", scope)
+                            .post("/oauth2/authorize")
+                            .then()
+                            .statusCode(200)
+                            .extract()
+                            .response();
+        	
+        	
 
         	/*return
                 given()
@@ -92,8 +106,7 @@ public class RestAssuredOAuth2 {
                             .statusCode(200)
                             .extract()
                             .response();*/
-        			
-        			return null;
+        			//	return null;
             
         
        
@@ -113,14 +126,17 @@ public class RestAssuredOAuth2 {
 
     @BeforeAll
     public static void setup() {
-        //RestAssured.baseURI = "http://localhost:8080";
+        RestAssured.baseURI = "http://localhost:8080";
+      
     }
 
-  
+   // @Test
     public void iShouldGetCode() {
     	
     	
         Response response = getCode();
+        
+    
         String code = parseForOAuth2Code(response);
 
         Assertions.assertNotNull(code);
