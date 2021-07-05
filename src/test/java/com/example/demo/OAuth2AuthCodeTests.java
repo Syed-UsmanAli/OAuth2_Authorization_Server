@@ -47,13 +47,13 @@ public class OAuth2AuthCodeTests {
     public static String password = "pass1";
     
 
-    @Before
+   // @Before
     public void setup() {
       
     }
     
     
-    @Test
+   // @Test
     public void iShouldGetCode() {
     	
         String code = getCode();
@@ -162,7 +162,7 @@ public class OAuth2AuthCodeTests {
     
     
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 	
