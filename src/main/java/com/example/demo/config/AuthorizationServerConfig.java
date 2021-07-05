@@ -27,7 +27,6 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
 		withClient("myclient").secret("mysecret").scopes("read").authorizedGrantTypes("password","refresh_token").
 		and().
 		
-		
 		withClient("myappclient").secret("myappsecret").scopes("read").authorizedGrantTypes("authorization_code","refresh_token")
 		.redirectUris("http://localhost:8083");
 	}
