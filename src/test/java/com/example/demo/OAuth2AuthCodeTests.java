@@ -24,14 +24,15 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.context.WebApplicationContext;
 
-@RunWith(SpringRunner.class)
-@WebAppConfiguration
-@SpringBootTest(classes=OAuth2Application.class)
+//@RunWith(SpringRunner.class)
+//@WebAppConfiguration
+//@SpringBootTest(classes=OAuth2Application.class)
 public class OAuth2AuthCodeTests {
 	
-
+/** commenting
 	
 	@Autowired
+
     private WebApplicationContext wac;
 
     @Autowired
@@ -47,10 +48,7 @@ public class OAuth2AuthCodeTests {
     public static String password = "pass1";
     
 
-   // @Before
-    public void setup() {
-      
-    }
+   
     
     
    // @Test
@@ -111,7 +109,7 @@ public class OAuth2AuthCodeTests {
     
     
     
-   /* @Test
+   @Test
     public void getAccessToken() throws Exception {
     	
         final String accessToken =  obtainAccessToken("user1","pass1");
@@ -158,13 +156,13 @@ public class OAuth2AuthCodeTests {
         
         return null;
         
-    }*/
+    }
     
     
 
 	//@Test
 	void contextLoads() {
-	}
+	} **/
 	
 	
    
