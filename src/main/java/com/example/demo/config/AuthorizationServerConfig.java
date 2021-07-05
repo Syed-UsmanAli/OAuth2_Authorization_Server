@@ -33,7 +33,9 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
 	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		// TODO Auto-generated method stub
+		
+		
+	
 		endpoints.authenticationManager(authenticationManager);
 	}
 	
