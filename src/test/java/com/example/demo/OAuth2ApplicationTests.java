@@ -26,6 +26,14 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.context.WebApplicationContext;
 
 
+/**
+ * 
+ * @author syedusman
+ * 
+ * Junit class to test the grant_type=password workflow of OAuth2
+ *
+ */
+
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
 @SpringBootTest(classes=OAuth2Application.class)
