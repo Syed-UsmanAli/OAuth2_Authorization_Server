@@ -15,7 +15,7 @@ Note : Junit test case has been written only for the grant type - password for t
        a valid "Access Token" along with "Refresh Token". 
        
 Steps on how to setup the project , build, execute and validate the test cases has been captured in a document with screenshots and uploaded withing this .git
-project. Please refer the document located at. -->
+project. Please refer the "Project Setup Document" mentioned in the Important Links below.
 
 Important Link(s)
 
