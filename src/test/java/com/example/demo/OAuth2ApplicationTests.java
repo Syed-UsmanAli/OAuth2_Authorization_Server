@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import static org.junit.Assert.assertNotNull;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -80,6 +81,8 @@ class OAuth2ApplicationTests {
 
         JacksonJsonParser jsonParser = new JacksonJsonParser();
         
+        assertNotNull(jsonParser.parseMap(resultString).get("access_token").toString());
+        
         
         return jsonParser.parseMap(resultString).get("access_token").toString();
         
@@ -95,9 +98,7 @@ class OAuth2ApplicationTests {
     
     
 
-	@Test
-	void contextLoads() {
-	}
+	
 	
 	
    
