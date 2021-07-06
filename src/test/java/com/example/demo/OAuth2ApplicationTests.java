@@ -57,8 +57,7 @@ class OAuth2ApplicationTests {
     public void getAccessToken() throws Exception {
     	
         final String accessToken =  obtainAccessToken("user1","pass1");
-        System.out.println(accessToken);
-       // log().info("access_token={}", accessToken);
+        assertNotNull(accessToken);
     }
     
     
